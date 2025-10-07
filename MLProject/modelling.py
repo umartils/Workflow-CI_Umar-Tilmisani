@@ -10,8 +10,8 @@ if __name__ == "__main__":
     np.random.seed(40)
 
     # Path dataset relatif terhadap file script
-    test_dataset_path = "car_evaluation_processed/test.csv"
-    train_dataset_path = "car_evaluation_processed/train_resampled.csv"
+    test_dataset_path = "car_evaluation_preprocessed/test.csv"
+    train_dataset_path = "car_evaluation_preprocessed/train_resampled.csv"
 
     # Load data
     test_data = pd.read_csv(test_dataset_path)

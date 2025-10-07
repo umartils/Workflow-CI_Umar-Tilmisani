@@ -22,6 +22,13 @@ jobs:
         with:
           python-version: "3.12.7"
 
+      # Cek environment
+      - name: Check Env
+        run: |
+          echo "CSV_URL: $CSV_URL"
+          python --version
+          pip --version
+
       # Install dependencies
       - name: Install dependencies
         run: |
@@ -36,3 +43,10 @@ jobs:
             --env-manager=local \
             -P n_estimators=505 \
             -P max_depth=35
+
+      # Get latest MLflow run_id
+      - name: Get latest MLflow run_id
+        run: |
+          echo "🔍 Mendapatkan MLflow run_id terbaru..."
+          RUN_ID=$(mlflow runs list --experiment-name "latihan-cs-mlflow" | awk 'NR==2 {print $1}')
+          echo "Run ID terbaru: $RUN_ID"
