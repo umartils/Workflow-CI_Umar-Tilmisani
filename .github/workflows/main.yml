@@ -19,13 +19,15 @@ jobs:
       with:
         activate-environment: mlflow-env
         environment-file: MLProject/conda.yaml
-        python-version: 3.9
+        python-version: 3.10
+        miniconda-version: "latest"
         auto-activate-base: false
 
-    - name: Install MLflow
+    - name: Install MLflow (backup install, just in case)
       run: |
         pip install mlflow
 
     - name: Run MLflow Project
       run: |
+        cd MLProject
         mlflow run . -P n_estimators=100 -P max_depth=20
